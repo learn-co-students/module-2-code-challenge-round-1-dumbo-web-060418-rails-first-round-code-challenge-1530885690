@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= form_tag(heroines_path, :method => "get", id: "search-form") do %>
+  		<%= text_field_tag :search, params[:search], placeholder: "Search Super Powers" %>
+  		<%= submit_tag "Search", :name => nil %>
+      <% end %>
     <title>ImmersiveRailsAssessment</title>
     <%= csrf_meta_tags %>
 
@@ -11,4 +15,7 @@
   <body>
     <%= yield %>
   </body>
+  <hr>
+  <center><%= link_to "Heroines Index", heroines_path %> | <%= link_to "Powers Index", powers_path %></center>
+  <center><%= link_to "Create Heroine", new_heroine_path %>
 </html>
