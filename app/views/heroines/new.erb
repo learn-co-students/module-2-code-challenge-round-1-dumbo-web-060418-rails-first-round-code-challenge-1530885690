@@ -1,0 +1,23 @@
+<h1>Your city needs you! Sign up here to become a heroine!</h1>
+
+<%= form_for @heroine do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :super_name %>
+  <%= f.text_field :super_name %>
+  <br>
+  <%= f.label :power_id %>
+  <%= f.collection_select :power_id, Power.all, :id, :name %>
+  <br>
+  <%= f.submit %>
+<% end %>
+
+<% if @heroine.errors.any? %>
+  <h3>Uh Oh! There were some errors in your form!</h3>
+  <ul>
+    <% @heroine.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>  
